@@ -63,4 +63,9 @@ describe('Calculator Component', () => {
     simulateInputAndClick("//;\n1;2;3");
     expect(getOutputText()).toContain('Result: 6');
   });
+
+  it('should show all negative numbers in the error message', () => {
+    simulateInputAndClick("1,-2,3,-4");
+    expect(getOutputText()).toContain('Error: Negative numbers not allowed -2,-4');
+  });
 });

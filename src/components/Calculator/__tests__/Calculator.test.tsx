@@ -38,4 +38,14 @@ describe('Calculator Component', () => {
     simulateInputAndClick('2');
     expect(getOutputText()).toContain('Result: 2');
   });
+
+  it('sum of 2 number', () => {
+    simulateInputAndClick('1,2');
+    expect(getOutputText()).toContain('Result: 3');
+  });
+
+  it('sum of multiple numbers', () => {
+    simulateInputAndClick('1,2,3,4');
+    expect(getOutputText()).toContain('Result: 10');
+  });
 });

@@ -12,10 +12,12 @@ const Calculator = (): JSX.Element => {
     const [error, setError] = useState<string>("");
 
     const add = (numbers: string): number => {
+        // Case 1: Empty string
         if (numbers === "") return 0;
 
-        // Case 1: If the input string contains a single number
-        return parseInt(numbers, 10);
+        // Comma Separated Single or Multiple Numbers
+        const numArray = numbers.split(",").map(Number);
+        return numArray.reduce((sum, num) => sum + num, 0);
     };
 
     const handleSubmit = (): void => {

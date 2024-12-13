@@ -14,10 +14,20 @@ const Calculator = (): JSX.Element => {
     const add = (numbers: string): number => {
         // Case 1: Empty string
         if (numbers === "") return 0;
+        // Replace "\\n" from e.target.value with actual newline character
+        numbers = numbers.replace(/\\n/g, '\n');
+        let delimiter = /,|\n/;
+        if (numbers.startsWith("//")) {
+            const match = numbers.match(/^\/\/(.+?)\n/);
+            if (match) {
+                delimiter = new RegExp(match[1]);
+                numbers = numbers.slice(match[0].length);
+            }
+        }
 
         // Multiple Numbers Split by comma or newline
         const numArray = numbers
-            .split(/\\n|,|\n/)
+            .split(delimiter)
             .map(Number);
         return numArray.reduce((sum, num) => sum + num, 0);
     };

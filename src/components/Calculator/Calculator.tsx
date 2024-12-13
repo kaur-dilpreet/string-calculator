@@ -15,8 +15,10 @@ const Calculator = (): JSX.Element => {
         // Case 1: Empty string
         if (numbers === "") return 0;
 
-        // Comma Separated Single or Multiple Numbers
-        const numArray = numbers.split(",").map(Number);
+        // Multiple Numbers Split by comma or newline
+        const numArray = numbers
+            .split(/\\n|,|\n/)
+            .map(Number);
         return numArray.reduce((sum, num) => sum + num, 0);
     };
 

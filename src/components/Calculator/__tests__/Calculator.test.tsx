@@ -48,4 +48,9 @@ describe('Calculator Component', () => {
     simulateInputAndClick('1,2,3,4');
     expect(getOutputText()).toContain('Result: 10');
   });
+
+  it('should handle newlines as a delimiter', () => {
+    simulateInputAndClick('1\n2,3');
+    expect(getOutputText()).toContain('Result: 6');
+  });
 });
